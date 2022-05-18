@@ -112,6 +112,21 @@ public class FileStudy {
 		System.out.println();
 	}
 	
+	public void studyList() {
+		File dir = new File("C:/");
+		
+		String[] list = dir.list();
+		File[] listFiles = dir.listFiles();
+		
+		/*for (String item : list) {
+			System.out.println(item);
+		}*/
+		
+		for (File file : listFiles) {
+			System.out.println(file.getName());
+		}
+	}
+	
 	
 	public Date makeDate(long unixTime) {
 		return new Date(unixTime);
@@ -126,7 +141,8 @@ public class FileStudy {
 		FileStudy fileStudy = new FileStudy();
 		//fileStudy.studyFileData();
 		//fileStudy.studyManage();
-		fileStudy.studyDirectory();
+		//fileStudy.studyDirectory();
+		fileStudy.studyList();
 	}
 	
 	
