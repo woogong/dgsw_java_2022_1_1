@@ -13,15 +13,8 @@ public class Engineer implements Runnable {
 	@Override
 	public void run() {
 		while (true) {
-			synchronized (counter) {
-				try {
-					counter.wait();
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-			}
-
 			String work = counter.getProblem();
+			
 			if (work != null) {
 				System.out.println("스마트폰 수리를 시작합니다. - " + work);
 				try {
@@ -30,6 +23,14 @@ public class Engineer implements Runnable {
 					e.printStackTrace();
 				}
 				System.out.println("스마트폰 수리를 종료합니다. - " + work);
+			} else {
+				synchronized (counter) {
+					try {
+						counter.wait();
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
 			}
 		}
 		
